@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import {ProductDetails} from '../../components/product/ProductDetails'
+import MainLayout from "../../layouts/MainLayout.astro";
+import { formatUnitAmount, getPriceBy, getPrices } from "../../lib/stripe";
+import type Stripe from "stripe";
+
+const { priceId } = Astro.params;
+
+const price = await getPriceBy(priceId);
+const product = price.product as Stripe.Product;
+const priceFormatted = formatUnitAmount(price.unit_amount, price.currency)
+
+export const getStaticPaths = (async () => {
+  const prices = await getPrices();
+  return prices.map((price) => ({
+    params: {
+      priceId: price.id,
+    },
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<MainLayout
+  title="Ecommerce Template"
+  description="Easily customizable ecommerce template for free use"
+>
+  <div class="mx-10 my-8 flex gap-6">
+    <img
+    class="rounded-xl max-h-[500px]"
+    src={product.images[0]}
+    alt={product.name}
+    transition:name={price.id}
+    />
+    <ProductDetails client:visible price={price} />
+  </div>
+</MainLayout>

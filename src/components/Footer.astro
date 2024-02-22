@@ -1,0 +1,53 @@
+---
+import { INSTAGRAM_URL, TIKTOK_URL, X_URL } from "../lib/config";
+import { Icon } from "./icons/Icon";
+---
+
+<footer class="w-full my-6">
+  <div
+    class="border mx-4 md:mx-6 px-12 flex justify-around bg-card rounded-xl shadow-sm p-4 flex-col lg:flex-row gap-4 lg:gap-0 items-center bg-white dark:bg-black"
+  >
+    <p class="flex-grow basis-0 text-sm">2024 Stripe Free Template</p>
+
+    <ul
+      class="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0 sm:flex-row flex-col"
+    >
+      <li>
+        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+      </li>
+      <li>
+        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+      </li>
+      <li>
+        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+      </li>
+      {
+        /* <li>
+            <a href="#" class="hover:underline">Contact</a>
+          </li> */
+      }
+    </ul>
+
+    <ul
+      class="flex-grow basis-0 flex justify-end gap-2 items-center mt-3 text-sm font-medium sm:mt-0"
+    >
+      <li>
+        <a href={INSTAGRAM_URL}
+          ><Icon.Instagram
+            className="hover:scale-110 transition-transform"
+          /></a
+        >
+      </li>
+      <li>
+        <a href={X_URL}
+          ><Icon.X className="hover:scale-110 transition-transform" /></a
+        >
+      </li>
+      <li>
+        <a href={TIKTOK_URL}
+          ><Icon.Tiktok className="hover:scale-110 transition-transform" /></a
+        >
+      </li>
+    </ul>
+  </div>
+</footer>
