@@ -6,7 +6,6 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
-  SheetOverlay
 } from "@/components/ui/sheet"
 import { Icon } from "../icons/Icon"
 import { useCartStore } from "@/store/store"

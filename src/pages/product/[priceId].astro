@@ -2,14 +2,13 @@
 import type { GetStaticPaths } from "astro";
 import {ProductDetails} from '../../components/product/ProductDetails'
 import MainLayout from "../../layouts/MainLayout.astro";
-import { formatUnitAmount, getPriceBy, getPrices } from "../../lib/stripe";
+import { getPriceBy, getPrices } from "../../lib/stripe";
 import type Stripe from "stripe";
 
 const { priceId } = Astro.params;
 
 const price = await getPriceBy(priceId);
 const product = price.product as Stripe.Product;
-const priceFormatted = formatUnitAmount(price.unit_amount, price.currency)
 
 export const getStaticPaths = (async () => {
   const prices = await getPrices();

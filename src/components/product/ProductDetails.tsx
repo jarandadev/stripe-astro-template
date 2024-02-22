@@ -15,7 +15,6 @@ export const ProductDetails = ({ price }: Props) => {
   const product: Stripe.Product = price.product as Stripe.Product
   const { addToCart } = useCartStore()
   const priceFormatted = formatUnitAmount(price.unit_amount, price.currency)
-  const imageHeight = 300
 
   return (
       <Card shadow="sm">
