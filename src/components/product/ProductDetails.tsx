@@ -4,7 +4,6 @@ import { Card, CardBody, CardFooter, Button, CardHeader } from "@nextui-org/reac
 import { navigate } from 'astro:transitions/client';
 import type Stripe from "stripe"
 import { Icon } from "../icons/Icon";
-import { HOST_URL } from "@/lib/config";
 
 
 interface Props {
@@ -30,7 +29,7 @@ export const ProductDetails = ({ price }: Props) => {
           <Button variant="flat" onClick={() => addToCart(price)}>
             Add to Cart<Icon.CartAdd />
           </Button>
-          <Button variant="light" onClick={() => navigate(HOST_URL)}>
+          <Button variant="light" onClick={() => navigate('/')}>
             Continue Shopping<Icon.ArrowRight />
           </Button>
         </CardFooter>
