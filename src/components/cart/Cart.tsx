@@ -11,17 +11,14 @@ import { Icon } from "../icons/Icon"
 import { useCartStore } from "@/store/store"
 import { CartItem } from "./CartItem"
 import { Button } from "@nextui-org/react"
-import { getCheckoutSession } from "@/lib/stripe"
+import { formatUnitAmount, getCheckoutSession } from "@/lib/stripe"
 import { navigate } from "astro/virtual-modules/transitions-router.js"
 
-interface Props {
-}
-
-export const Cart = ({ }: Props) => {
+export const Cart = () => {
   const { cart } = useCartStore()
 
   const handleCheckout = async () => {
-    const {url} = await getCheckoutSession(cart)
+    const { url } = await getCheckoutSession(cart)
     navigate(url)
   }
 
@@ -30,6 +27,16 @@ export const Cart = ({ }: Props) => {
   const totalItems = isCartEmpty ? 0 : cart.reduce((total, currentItem) => {
     return total + currentItem.quantity!;
   }, 0);
+
+  const totalPrice = cart.reduce((acc, item) => {
+    if (item.quantity && (item.price || (item.price_data && item.price_data.unit_amount))) {
+      const unitPrice = item.price_data?.unit_amount!;
+      return acc + unitPrice * item.quantity;
+    }
+    return acc;
+  }, 0);
+
+  const totalPriceFormatted = formatUnitAmount(totalPrice, cart[0]?.price_data?.currency)
 
   return (
     <Sheet>
@@ -44,9 +51,14 @@ export const Cart = ({ }: Props) => {
         <div className="space-y-4 my-6">
           {!isCartEmpty && cart.map((item, i) => <CartItem key={i} item={item} />)}
         </div>
-        <SheetFooter>
-          {!isCartEmpty && <Button variant="flat" onClick={handleCheckout}>Checkout</Button>}
-        </SheetFooter>
+        {!isCartEmpty &&
+          <SheetFooter>
+            <div className="flex items-center justify-between w-full">
+              <b><span className="font-normal text-xs">Total: </span>{totalPriceFormatted}</b>
+              <Button variant="flat" onClick={handleCheckout}>Checkout</Button>
+            </div>
+          </SheetFooter>
+        }
       </SheetContent>
     </Sheet>
   )

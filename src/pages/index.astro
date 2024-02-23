@@ -5,9 +5,8 @@ import { getPrices } from "@/lib/stripe";
 
 const prices = await getPrices();
 ---
-
 <MainLayout
-  title="Ecommerce Template"
+  title="Stripe Template"
   description="Easily customizable ecommerce template for free use"
 >
   <div class="w-full my-8">
@@ -17,7 +16,7 @@ const prices = await getPrices();
           prices &&
             prices.map((price) => (
               <div transition:name={price.id}>
-                <ProductCard client:visible price={price} />
+                <ProductCard client:only="react" price={price} />
               </div>
             ))
         }

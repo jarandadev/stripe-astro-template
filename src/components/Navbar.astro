@@ -1,13 +1,12 @@
 ---
 import { Cart } from "./cart/Cart";
-// export const prerender = false
 ---
 
 <div
   class="w-full h-14 z-50 flex justify-center sticky top-0 bg-white dark:bg-black border-b"
 >
   <div class="px-4 md:px-6 max-w-7xl w-full justify-between flex items-center">
-    <a href="/" class="lg:flex-grow lg:basis-0"> Stripe Free Template</a>
+    <a href="/" class="lg:flex-grow lg:basis-0"> Stripe Template</a>
     <div class="flex gap-6">
       <Cart client:load />
     </div>

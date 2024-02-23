@@ -1,6 +1,5 @@
 export const {
-  STRIPE_SECRET_KEY,
-  STRIPE_PUBLISHABLE_KEY,
+  STRIPE_SECRET_KEY: STRIPE_SECRET_KEY,
 } = import.meta.env
 
 export const CURRENCY = 'eur'

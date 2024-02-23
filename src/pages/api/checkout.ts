@@ -22,7 +22,6 @@ export const POST: APIRoute = async (req) => {
       cancel_url: req.request.headers.get('referer') || '/',
       billing_address_collection: 'required',
     });
-    console.log(session)
     return new Response(JSON.stringify(session), { status: 200, headers: { 'Content-Type': 'application/json' } })
   } catch (error) {
     return new Response('Error creating checkout session', { status: 500 })

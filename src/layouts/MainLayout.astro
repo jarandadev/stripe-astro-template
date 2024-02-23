@@ -1,8 +1,9 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import '@/styles/globals.css'
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
+import { ViewTransitions } from "astro:transitions";
+import "@/styles/globals.css";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
+import { Toaster } from "@/components/ui/toaster";
 
 interface Props {
   title: string;
@@ -21,9 +22,12 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-		<ViewTransitions />
+    <ViewTransitions />
   </head>
   <body class="min-h-screen w-full flex flex-col items-center justify-center">
+    <div transition:animate="initial" class="z-40">
+      <Toaster client:load />
+    </div>
     <Navbar />
     <div class="flex-grow w-full max-w-7xl px-4 md:px-6">
       <slot />

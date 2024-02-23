@@ -25,7 +25,6 @@ export const getPrices = async () => {
     expand: ['data.product'],
     active: true,
     limit: 100,
-    currency: CURRENCY,
   })
   return prices
 }
