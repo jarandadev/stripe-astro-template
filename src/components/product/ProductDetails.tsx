@@ -5,7 +5,6 @@ import { navigate } from 'astro:transitions/client';
 import type Stripe from "stripe"
 import { Icon } from "../icons/Icon";
 
-
 interface Props {
   price: Stripe.Price
 }

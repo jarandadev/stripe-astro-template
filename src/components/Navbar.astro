@@ -1,6 +1,6 @@
 ---
 import { Cart } from "./cart/Cart";
-export const prerender = false
+// export const prerender = false
 ---
 
 <div
@@ -9,8 +9,6 @@ export const prerender = false
   <div class="px-4 md:px-6 max-w-7xl w-full justify-between flex items-center">
     <a href="/" class="lg:flex-grow lg:basis-0"> Stripe Free Template</a>
     <div class="flex gap-6">
-      <!-- <a href="/products">Products</a>
-      <a href="/about">About</a> -->
       <Cart client:load />
     </div>
   </div>
