@@ -5,22 +5,19 @@ import { getPrices } from "@/lib/stripe";
 
 const prices = await getPrices();
 ---
+
 <MainLayout
   title="Stripe Template"
   description="Easily customizable ecommerce template for free use"
 >
-  <div class="w-full my-8">
-    <div class="flex flex-col items-center gap-8">
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
-        {
-          prices &&
-            prices.map((price) => (
-              <div transition:name={price.id}>
-                <ProductCard client:only="react" price={price} />
-              </div>
-            ))
-        }
-      </div>
-    </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
+    {
+      prices &&
+        prices.map((price) => (
+          <div transition:name={price.id}>
+            <ProductCard client:only="react" price={price} />
+          </div>
+        ))
+    }
   </div>
 </MainLayout>

@@ -30,11 +30,11 @@ export const ProductDetails = ({ price }: Props) => {
         <h1 className="font-bold text-2xl mb-2">{product.name}</h1>
       </CardHeader>
 
-      <CardBody>
+      <CardBody className="space-y-4">
         {product?.description && <p><span className="font-bold">Description: </span>{product.description}</p>}
         <p><span className="font-bold">Price: </span>{priceFormatted}</p>
       </CardBody>
-      <CardFooter className="flex gap-4 flex-col sm:flex-row items-start">
+      <CardFooter className="flex gap-4 flex-col sm:flex-row items-start mt-4">
         <Button variant="flat" onClick={handleAdd}>
           Add to Cart<Icon.CartAdd />
         </Button>

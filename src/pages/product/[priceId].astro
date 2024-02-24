@@ -22,19 +22,21 @@ export const getStaticPaths = (async () => {
 ---
 
 <MainLayout
-  title="Ecommerce Template"
-  description="Easily customizable ecommerce template for free use"
+  title={product.name}
+  description={product.description ?? `Buy ${product.name}`}
 >
-  <div class="mx-10 my-8 flex flex-col lg:flex-row gap-6 lg:max-w-4xl">
-    <Image
-      height={400}
-      width={400}
-      loading={"lazy"}
-      src={product.images[0]}
-      alt={product.name}
-      transition:name={price.id}
-      class="rounded-xl"
-    />
+  <div class="flex gap-6 flex-col md:flex-row items-center md:items-start md:justify-center">
+    <div class="w-full flex justify-center">
+      <Image
+        height={400}
+        width={400}
+        loading={"lazy"}
+        src={product.images[0]}
+        alt={product.name}
+        transition:name={price.id}
+        class="rounded-xl"
+      />
+    </div>
     <ProductDetails client:only="react" price={price} />
   </div>
 </MainLayout>
