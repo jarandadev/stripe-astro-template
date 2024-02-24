@@ -16,9 +16,9 @@ export const CartItem = ({ item }: Props) => {
 
   return (
     <div className="flex justify-between items-center">
-      <div className="flex gap-4">
-        <Image className="border w-20 h-20 object-cover" src={product.images[0]} alt={product.name} />
-        <div className=" flex flex-col justify-between">
+      <div className="flex gap-4 items-center">
+        <img className="border min-w-20 min-h-20 w-20 h-20 rounded-xl object-cover" src={product.images[0]} alt={product.name} />
+        <div className=" flex flex-col justify-between text-small">
           <b>{product.name}</b>
           <p>{unitPriceFormatted}</p>
           <div className="flex">
@@ -35,7 +35,7 @@ export const CartItem = ({ item }: Props) => {
         </div>
       </div>
       <div>
-        <p>{totalPriceFormatted}</p>
+        <p className="hidden sm:block text-nowrap text-small">{totalPriceFormatted}</p>
       </div>
     </div>
   )

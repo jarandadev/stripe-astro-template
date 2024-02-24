@@ -25,15 +25,13 @@ export const ProductCard = ({ price }: Props) => {
   }
 
   return (
-    <div className="relative">
-      <Card className="h-[300px]" fullWidth isHoverable shadow="sm" isPressable onPress={() => navigate(`/product/${price.id}`)}>
-        <CardBody className="overflow-visible p-0">
+    <div className="relative h-full">
+      <Card className="h-full" fullWidth isHoverable shadow="sm" isPressable onPress={() => navigate(`/product/${price.id}`)}>
+        <CardBody className="p-0">
           <Image
             alt={product.name}
             src={product.images[0]}
             loading="lazy"
-            className="object-cover w-full max-h-[230px]"
-            width={300}
             height={300}
           />
         </CardBody>

@@ -43,7 +43,7 @@ export const Cart = () => {
       <SheetTrigger>
         <Icon.Cart />
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-auto">
         <SheetHeader>
           <SheetTitle>Cart {`(${totalItems})`}</SheetTitle>
           {isCartEmpty && <SheetDescription>Your cart is empty</SheetDescription>}
@@ -53,8 +53,8 @@ export const Cart = () => {
         </div>
         {!isCartEmpty &&
           <SheetFooter>
-            <div className="flex items-center justify-between w-full">
-              <b><span className="font-normal text-xs">Total: </span>{totalPriceFormatted}</b>
+            <div className="flex items-center justify-between w-full text-small">
+              <b><span className="font-normal">Total: </span>{totalPriceFormatted}</b>
               <Button variant="flat" onClick={handleCheckout}>Checkout</Button>
             </div>
           </SheetFooter>

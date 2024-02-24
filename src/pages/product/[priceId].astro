@@ -3,8 +3,8 @@ import type { GetStaticPaths } from "astro";
 import { ProductDetails } from "../../components/product/ProductDetails";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { getPriceBy, getPrices } from "../../lib/stripe";
-import type Stripe from "stripe";
 import { Image } from "astro:assets";
+import type Stripe from "stripe";
 
 const { priceId } = Astro.params;
 
@@ -25,15 +25,15 @@ export const getStaticPaths = (async () => {
   title="Ecommerce Template"
   description="Easily customizable ecommerce template for free use"
 >
-  <div class="mx-10 my-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="mx-10 my-8 flex flex-col md:flex-row gap-6 max-w-4xl">
     <Image
-    width={500}
-    loading={'lazy'}
-    height={500}
+      height={400}
+      width={400}
+      loading={"lazy"}
       src={product.images[0]}
       alt={product.name}
       transition:name={price.id}
-      class="rounded-xl max-h-[500px]"
+      class="rounded-xl"
     />
     <ProductDetails client:only="react" price={price} />
   </div>

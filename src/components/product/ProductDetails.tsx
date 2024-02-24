@@ -25,7 +25,7 @@ export const ProductDetails = ({ price }: Props) => {
   }
 
   return (
-    <Card shadow="sm">
+    <Card shadow="sm" className="w-full">
       <CardHeader>
         <h1 className="font-bold text-2xl mb-2">{product.name}</h1>
       </CardHeader>
